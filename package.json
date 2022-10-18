@@ -1,0 +1,16 @@
+{
+  "name": "tech-blog-clone",
+  "version": "1.0.0",
+  "description": "Serverless tech blog clone with subs moduls",
+  "main": "server.js",
+  "scripts": {
+    "start:dev": "",
+    "start:prod":"",
+    "deploy:dev": "",
+    "deploy:prod": "",
+    "test": ""
+  },
+  "keywords": [],
+  "author": "https://github.com/mohie93",
+  "license": "ISC"
+}
