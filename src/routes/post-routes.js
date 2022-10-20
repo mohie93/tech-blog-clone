@@ -9,7 +9,7 @@ const {
 
 const router = express.Router();
 
-router.get("/", apiCallback(controller.listPosts));
+router.get("/", apiCallback(controller.getPosts));
 
 router.post("/", validateCreatePostRequest, apiCallback(controller.createPost));
 

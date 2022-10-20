@@ -1,9 +1,9 @@
 const Post = require("../models/post-model");
 
-exports.createCategory = async (req) => {
+exports.createPost = async (req) => {
   const post = new Post(req.body);
   await post.create();
-  return { statusCode: 201, data: Post };
+  return { statusCode: 201, data: post };
 };
 
 exports.updatePost = async (req) => {
