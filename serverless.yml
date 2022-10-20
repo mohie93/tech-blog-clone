@@ -27,6 +27,7 @@ provider:
     subnetIds:
       - ${env:AWS_PRIVATE_SUBNET_A}
       - ${env:AWS_PRIVATE_SUBNET_B}
+      - ${env:AWS_PRIVATE_SUBNET_C}
 
   environment:
     REGION: ${env:AWS_REGION}
@@ -35,7 +36,7 @@ provider:
     DATABASE_USER: ${env:DATABASE_USER}
     DATABASE_PASSWORD: ${env:DATABASE_PASSWORD}
     DATABASE_PORT: ${env:DATABASE_PORT}
-    NODE_ENV: ${opt:stage, 'development'}
+    NODE_ENV: ${env:NODE_ENV}
     PASSWORD_SALT: ${env:PASSWORD_SALT}
 
 plugins:
@@ -65,6 +66,12 @@ functions:
           method: get
           path: /healthcheck
           cors: true
+
+      - http:
+          method: post
+          path: /api/system/migrations
+          cors: true
+
       - http:
           method: post
           path: /api/users

@@ -18,6 +18,7 @@ app.get("/healthcheck", async (_, res) => {
 app.use("/api/users", require("./src/routes/user-routes"));
 app.use("/api/posts", require("./src/routes/post-routes"));
 app.use("/api/categories", require("./src/routes/category-routes"));
+app.use("/api/system", require("./src/routes/system-routes"));
 
 // to handle local development requests
 exports.app = app;

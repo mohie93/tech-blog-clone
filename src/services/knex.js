@@ -1,4 +1,5 @@
 /* eslint-disable import/order */
+require("dotenv").config({});
 
 const knexConfig = require("../../knexfile");
 

@@ -2,6 +2,7 @@ require("dotenv").config({});
 
 const { v4: uuid } = require("uuid");
 const crypto = require("crypto");
+const knex = require("../services/knex");
 
 const encrypt = async (password) => {
   // Hashing user's salt and password with 1000 iterations,64 length and sha512 digest
@@ -12,8 +13,6 @@ const encrypt = async (password) => {
 
   return crypto.pbkdf2Sync(password, salt, iterations, 30, `sha512`).toString(`hex`);
 };
-
-const knex = require("../services/knex");
 
 const tableName = "users";
 

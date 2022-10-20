@@ -4,11 +4,13 @@
   "description": "Serverless tech blog clone with subs moduls",
   "main": "server.js",
   "scripts": {
-    "start": "env-cmd --file .env.local npx knex migrate:latest && env-cmd --file .env.local nodemon ./node_modules/.bin/serverless offline start --httpPort 3000",
-    "test": "env-cmd --file .env.test npx knex migrate:latest && env-cmd --file .env.test jest --silent --runInBand --detectOpenHandles --passWithNoTests --forceExit",
-    "deploy:dev": "env-cmd --file .env.development serverless deploy --stage dev --region ap-southeast-1",
-    "deploy:prod": "env-cmd --file .env.production serverless deploy --stage production --region ap-southeast-1",
-    "prettier-format": "prettier --config .prettierrc.json 'src/**/*.js' --write"
+    "start": "env-cmd --file .env.local nodemon ./node_modules/.bin/serverless offline start --httpPort 3000",
+    "test": "env-cmd --file .env.test jest --silent --runInBand --detectOpenHandles --passWithNoTests --forceExit",
+    "deploy:dev": "env-cmd --file .env.development serverless deploy --aws-profile serverless-admin --stage dev --region ap-southeast-1",
+    "deploy:prod": "env-cmd --file .env.production serverless deploy --aws-profile serverless-admin --stage production --region ap-southeast-1",
+    "prettier-format": "prettier --config .prettierrc.json 'src/**/*.js' --write",
+    "knex:migrate": "env-cmd --file .env.local npx knex migrate:latest",
+    "knex:migrate:rollback": "env-cmd --file .env.local npx knex migrate:rollback"
   },
   "author": "https://github.com/mohie93",
   "license": "ISC",
