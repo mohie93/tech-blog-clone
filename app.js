@@ -5,7 +5,7 @@ const app = express();
 const cors = require("cors");
 
 // handle json requests
-app.use(express.json({ limit: "10mb" }));
+app.use(express.json());
 
 // handle cross origins calls
 app.use(cors());
@@ -14,6 +14,10 @@ app.use(cors());
 app.get("/healthcheck", async (_, res) => {
   res.status(200).json({ message: "OK" });
 });
+
+app.use("/api/users", require("./src/routes/user-routes"));
+app.use("/api/posts", require("./src/routes/post-routes"));
+app.use("/api/categories", require("./src/routes/category-routes"));
 
 // to handle local development requests
 exports.app = app;

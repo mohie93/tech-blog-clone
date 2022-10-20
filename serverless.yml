@@ -36,6 +36,7 @@ provider:
     DATABASE_PASSWORD: ${env:DATABASE_PASSWORD}
     DATABASE_PORT: ${env:DATABASE_PORT}
     NODE_ENV: ${opt:stage, 'development'}
+    PASSWORD_SALT: ${env:PASSWORD_SALT}
 
 plugins:
   - serverless-offline
@@ -63,4 +64,60 @@ functions:
       - http:
           method: get
           path: /healthcheck
+          cors: true
+      - http:
+          method: post
+          path: /api/users
+          cors: true
+      - http:
+          method: post
+          path: /api/users/login
+          cors: true
+      - http:
+          method: delete
+          path: /api/users/logout
+          cors: true
+      - http:
+          method: post
+          path: /api/users/upgrade_mebership
+          cors: true
+      - http:
+          method: get
+          path: /api/posts
+          cors: true
+      - http:
+          method: post
+          path: /api/posts
+          cors: true
+      - http:
+          method: delete
+          path: /api/posts/{postId}
+          cors: true
+      - http:
+          method: get
+          path: /api/posts/{postId}
+          cors: true
+      - http:
+          method: patch
+          path: /api/posts/{postId}
+          cors: true
+      - http:
+          method: get
+          path: /api/categories
+          cors: true
+      - http:
+          method: post
+          path: /api/categories
+          cors: true
+      - http:
+          method: delete
+          path: /api/categories/{categoryId}
+          cors: true
+      - http:
+          method: get
+          path: /api/categories/{categoryId}
+          cors: true
+      - http:
+          method: patch
+          path: /api/categories/{categoryId}
           cors: true

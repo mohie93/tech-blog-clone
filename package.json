@@ -4,10 +4,11 @@
   "description": "Serverless tech blog clone with subs moduls",
   "main": "server.js",
   "scripts": {
-    "start": "env-cmd --file .env.local npx knex migrate:latest && env-cmd --file .env.local nodemon ./node_modules/.bin/serverless offline start --httpPort 4000",
+    "start": "env-cmd --file .env.local npx knex migrate:latest && env-cmd --file .env.local nodemon ./node_modules/.bin/serverless offline start --httpPort 3000",
     "test": "env-cmd --file .env.test npx knex migrate:latest && env-cmd --file .env.test jest --silent --runInBand --detectOpenHandles --passWithNoTests --forceExit",
     "deploy:dev": "env-cmd --file .env.development serverless deploy --stage dev --region ap-southeast-1",
-    "deploy:prod": "env-cmd --file .env.production serverless deploy --stage production --region ap-southeast-1"
+    "deploy:prod": "env-cmd --file .env.production serverless deploy --stage production --region ap-southeast-1",
+    "prettier-format": "prettier --config .prettierrc.json 'src/**/*.js' --write"
   },
   "author": "https://github.com/mohie93",
   "license": "ISC",
@@ -15,11 +16,13 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-openid-connect": "^2.9.0",
     "joi": "^17.6.3",
     "knex": "^2.3.0",
     "mysql2": "^2.3.3",
     "serverless": "^3.23.0",
-    "serverless-http": "^3.0.3"
+    "serverless-http": "^3.0.3",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",

@@ -1,8 +1,10 @@
+/* eslint-disable consistent-return */
 /* eslint-disable func-names */
+
 exports.up = function (knex) {
   return knex.schema.hasTable("payments").then((exists) => {
     if (!exists) {
-      knex.schema.createTable("payments", (table) => {
+      return knex.schema.createTable("payments", (table) => {
         table.uuid("paymentId").primary();
         table.string("amount").notNullable();
         table.string("PaymentMethod").notNullable();

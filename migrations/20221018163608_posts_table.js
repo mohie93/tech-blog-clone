@@ -1,8 +1,10 @@
+/* eslint-disable consistent-return */
 /* eslint-disable func-names */
+
 exports.up = function (knex) {
   return knex.schema.hasTable("posts").then((exists) => {
     if (!exists) {
-      knex.schema.createTable("posts", (table) => {
+      return knex.schema.createTable("posts", (table) => {
         table.uuid("postId").primary();
         table.string("title").notNullable();
         table.string("categoryId").notNullable();
@@ -11,13 +13,6 @@ exports.up = function (knex) {
         table.string("label").notNullable();
         table.timestamp("createdAt").defaultTo(knex.fn.now());
         table.timestamp("updatedAt").defaultTo(knex.fn.now());
-      });
-
-      knex.schema.table("posts", (table) => {
-        table
-          .foreign("categoryId")
-          .references("categoryId")
-          .inTable("categories");
       });
     }
   });

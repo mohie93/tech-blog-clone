@@ -1,8 +1,10 @@
+/* eslint-disable consistent-return */
 /* eslint-disable func-names */
+
 exports.up = function (knex) {
   return knex.schema.hasTable("categories").then((exists) => {
     if (!exists) {
-      knex.schema.createTable("categories", (table) => {
+      return knex.schema.createTable("categories", (table) => {
         table.uuid("categoryId").primary();
         table.string("name").notNullable();
         table.string("description").notNullable();
