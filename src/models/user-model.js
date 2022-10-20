@@ -19,6 +19,7 @@ const tableName = "users";
 
 class User {
   constructor(payload) {
+    this.userId = uuid();
     this.fullName = payload.fullName;
     this.userName = payload.userName;
     this.password = payload.password;
@@ -28,12 +29,12 @@ class User {
   }
 
   async create() {
-    const { userName, password, email, fullName, type, membership } = this;
+    const { userId, userName, password, email, fullName, type, membership } = this;
 
     const encryptedPassword = await encrypt(password);
 
     return await knex(tableName).insert({
-      userId: uuid(),
+      userId,
       userName,
       password: encryptedPassword,
       email,
@@ -56,7 +57,7 @@ class User {
   }
 
   static async getBy(options) {
-    return knex(tableName).where(options).select("*");
+    return knex(tableName).where(options).select("*").first();
   }
 
   static async getAll() {

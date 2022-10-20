@@ -2,8 +2,9 @@ const Joi = require("joi");
 const baseValidator = require("./base-validator");
 const User = require("../models/user-model");
 
-const emailInUse = async (email) => await User.findBy({ email });
-const userNameInUser = async (userName) => await User.findBy({ userName });
+const emailInUse = async (email) => await User.getBy({ email });
+const userNameInUser = async (userName) => await User.getBy({ userName });
+const userExists = async (userId) => await User.getById(userId);
 
 const userSchema = {
   create: Joi.object({
@@ -20,7 +21,7 @@ const userSchema = {
     password: Joi.string().required().min(8).max(20)
   }),
 
-  upgradeMebership: Joi.object({
+  userIdOperation: Joi.object({
     userId: Joi.string().required().uuid()
   })
 };
@@ -48,9 +49,11 @@ exports.validateLoginUserRequest = async (req, res, next) => {
   }
 };
 
-exports.validateUpgradeUserMembershipRequest = async (req, res, next) => {
+exports.validateRequestIncludesUserId = async (req, res, next) => {
   try {
-    await baseValidator.validate(req.body, userSchema.upgradeMebership);
+    const { userId } = req.params;
+    if (!(await userExists(userId))) return res.status(401).json({ message: "unauthorised access" });
+    await baseValidator.validate(req.body, userSchema.userIdOperation);
     return next();
   } catch (error) {
     return res.status(401).json(error);

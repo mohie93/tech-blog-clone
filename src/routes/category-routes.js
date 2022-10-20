@@ -10,9 +10,13 @@ const {
 const router = express.Router();
 
 router.get("/", apiCallback(controller.getCategories));
+
 router.post("/", validateCreateCategoryRequest, apiCallback(controller.createCategory));
+
 router.get("/:categoryId", validateRequestIcnludesCategoryId, apiCallback(controller.getCategory));
+
 router.patch("/:categoryId", validateUpdateCategoryRequest, apiCallback(controller.updateCategory));
+
 router.delete("/:categoryId", validateRequestIcnludesCategoryId, apiCallback(controller.deleteCategory));
 
 module.exports = router;

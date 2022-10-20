@@ -79,8 +79,17 @@ functions:
           cors: true
       - http:
           method: post
-          path: /api/users/upgrade_mebership
+          path: /api/users/{userId}/upgrade_mebership
           cors: true
+      - http:
+          method: get
+          path: /api/users/{userId}
+          cors: true
+      - http:
+          method: patch
+          path: /api/users/{userId}
+          cors: true
+
       - http:
           method: get
           path: /api/posts
@@ -101,6 +110,7 @@ functions:
           method: patch
           path: /api/posts/{postId}
           cors: true
+
       - http:
           method: get
           path: /api/categories
