@@ -20,8 +20,8 @@
 ## APP Structure
 
 - The app folows MVC pattern
-  - /
-    - src/
+  - [/](controllers](https://github.com/mohie93/tech-blog-clone/tree/main))
+    - [src/](controllers](https://github.com/mohie93/tech-blog-clone/tree/main/src))
       - [controllers](https://github.com/mohie93/tech-blog-clone/tree/main/src/controllers)
       - [models](https://github.com/mohie93/tech-blog-clone/tree/main/src/models)
       - [routes](https://github.com/mohie93/tech-blog-clone/tree/main/src/routes)
