@@ -34,11 +34,6 @@ exports.loginUser = async (req) => {
   return { statusCode: 401, data: "unathorised access" };
 };
 
-exports.logoutUser = async () => ({
-  statusCode: 204,
-  data: { message: "logout" }
-});
-
 // This endpoint will be callback_url for BillPlz and it will be called if BillPlz request back with 200 status code
 exports.upgradeUserMembership = async (req) => {
   const { userId } = req.params;
