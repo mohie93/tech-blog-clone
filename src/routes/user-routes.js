@@ -19,6 +19,4 @@ router.patch("/:userId", validateRequestIncludesUserId, apiCallback(controller.u
 
 router.post("/:userId/upgrade_mebership", validateRequestIncludesUserId, apiCallback(controller.upgradeUserMembership));
 
-router.delete("/logout", apiCallback(controller.logoutUser));
-
 module.exports = router;

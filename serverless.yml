@@ -81,10 +81,6 @@ functions:
           path: /api/users/login
           cors: true
       - http:
-          method: delete
-          path: /api/users/logout
-          cors: true
-      - http:
           method: post
           path: /api/users/{userId}/upgrade_mebership
           cors: true
